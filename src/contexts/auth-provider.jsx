@@ -1,12 +1,10 @@
 import { createContext, useEffect, useState, useCallback } from "react";
-import { useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
-import axiosInstance from "../lib/axios";
+import { axiosInstance } from "../lib/axios";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const location = useLocation();
   const [data, setData] = useState(null);
 
   const getUser = useCallback(async () => {
@@ -51,10 +49,8 @@ export const AuthProvider = ({ children }) => {
   }, [data]);
 
   useEffect(() => {
-    if (location.pathname === "/") {
-      getUser();
-    }
-  }, [getUser, location]);
+    getUser();
+  }, [getUser]);
 
   return (
     <AuthContext.Provider value={{ data, setData }}>

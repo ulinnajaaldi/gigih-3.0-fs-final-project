@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { HomeIcon } from "@heroicons/react/24/outline";
 import {
   Button,
@@ -13,15 +13,8 @@ import { toastNotify } from "../lib/utils";
 import { useLoginForm } from "../features/auth/login/useLoginForm";
 
 const LoginPage = () => {
-  const navigate = useNavigate();
-
-  const onSuccess = (data) => {
-    toastNotify({
-      type: "success",
-      message: data.data.message,
-    });
-
-    navigate("/");
+  const onSuccess = () => {
+    window.location.href = "/";
   };
   const onError = (error) => {
     toastNotify({

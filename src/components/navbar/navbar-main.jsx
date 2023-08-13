@@ -18,12 +18,13 @@ import {
   ChevronDownIcon,
   PowerIcon,
 } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth-provider";
 import Cookies from "js-cookie";
 import { toastNotify } from "../../lib/utils";
 
 function NavList() {
+  const navigate = useNavigate();
   const { data, setData } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -35,6 +36,7 @@ function NavList() {
       type: "info",
       message: "Logout success",
     });
+    navigate("/");
   };
 
   return (
@@ -69,7 +71,10 @@ function NavList() {
             </Button>
           </MenuHandler>
           <MenuList className="p-1">
-            <MenuItem className="flex items-center gap-2 rounded">
+            <MenuItem
+              onClick={() => navigate("/dashboard")}
+              className="flex items-center gap-2 rounded"
+            >
               <UserCircleIcon className="h-4 w-4" strokeWidth={2} />
               <Typography
                 as="span"
