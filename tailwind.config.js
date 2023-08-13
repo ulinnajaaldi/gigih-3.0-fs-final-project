@@ -7,7 +7,7 @@ module.exports = withMT({
     extend: {},
     screens: {
       xs: "375px",
-      sm: "640px",
+      sm: "425px",
       md: "768px",
       lg: "1024px",
       xl: "1280px",
@@ -15,7 +15,7 @@ module.exports = withMT({
     container: {
       center: true,
       padding: {
-        DEFAULT: "1rem",
+        DEFAULT: "2rem",
         sm: "2rem",
         lg: "3rem",
       },
