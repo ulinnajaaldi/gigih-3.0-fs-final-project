@@ -10,6 +10,7 @@ import {
 } from "@material-tailwind/react";
 
 const ModalAddProduct = ({
+  content,
   isModalOpen,
   setIsModalOpen,
   handleFormInput,
@@ -18,20 +19,21 @@ const ModalAddProduct = ({
 }) => {
   return (
     <Dialog open={isModalOpen} handler={() => setIsModalOpen(false)} size="lg">
-      <DialogHeader>
+      <DialogHeader className="capitalize">
         <ShoppingBagIcon className="mr-2 h-8 w-8 rounded-full bg-green-600 p-[6px] text-white" />
-        Add New Product
+        {content}
       </DialogHeader>
 
       <DialogBody className="flex flex-col gap-2">
         <p className="font-medium text-gray-700">
-          Field the form below to add new product
+          Field the form below to {content}
         </p>
         <div className="mt-3">
           <Input
             label="Title"
             name="title"
             onChange={handleFormInput}
+            value={formik.values.title}
             className="rounded-md border border-gray-500 px-3 py-2"
             error={formik.errors.title && formik.touched.title && true}
           />
@@ -46,6 +48,7 @@ const ModalAddProduct = ({
             label="Price"
             name="price"
             onChange={handleFormInput}
+            value={formik.values.price}
             className="rounded-md border border-gray-500 px-3 py-2"
             error={formik.errors.price && formik.touched.price && true}
           />
@@ -60,6 +63,7 @@ const ModalAddProduct = ({
             label="Product URL"
             name="link"
             onChange={handleFormInput}
+            value={formik.values.link}
             className="rounded-md border border-gray-500 px-3 py-2"
             error={formik.errors.link && formik.touched.link && true}
           />
@@ -74,6 +78,7 @@ const ModalAddProduct = ({
             label="Image URL"
             name="imageUrl"
             onChange={handleFormInput}
+            value={formik.values.imageUrl}
             className="rounded-md border border-gray-500 px-3 py-2"
             error={formik.errors.imageUrl && formik.touched.imageUrl && true}
           />
