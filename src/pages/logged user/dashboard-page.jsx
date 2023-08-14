@@ -151,6 +151,7 @@ const DashboardPage = () => {
             />
 
             <ModalAddVideo
+              content="add new video"
               isModalOpen={isModalAddVideo}
               setIsModalOpen={setIsModalAddVideo}
               handleFormInput={handleAddVideoFormInput}
@@ -159,6 +160,7 @@ const DashboardPage = () => {
             />
 
             <ModalAddProduct
+              content="add new product"
               isModalOpen={isModalAddProduct}
               setIsModalOpen={setIsModalAddProduct}
               handleFormInput={handleAddProductFormInput}

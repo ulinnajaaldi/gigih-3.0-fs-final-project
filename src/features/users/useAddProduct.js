@@ -26,8 +26,13 @@ export const useAddProduct = ({ refetchUserDetails }) => {
         .required("Price is required")
         .test("is-non-zero", "Price is required", (value) => value > 0)
         .typeError("Price must be a number"),
-      link: Yup.string().required("Product url is required"),
-      imageUrl: Yup.string().required("Image url is required"),
+      link: Yup.string()
+        .required("Product url is required")
+        .matches(/^https:\/\/.*$/, "Product url is not valid"),
+      imageUrl: Yup.string()
+        .required("Image url is required")
+        .matches(/^https:\/\/.*$/, "Image url must start with https")
+        .matches(/.*img.*|.*images.*|.*image.*/, "Image url is not valid"),
     }),
   });
 

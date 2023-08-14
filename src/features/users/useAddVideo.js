@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { toastNotify } from "../../lib/utils";
 import { useMutation } from "@tanstack/react-query";
 import { axiosInstanceWithToken } from "../../lib/axios";
+import { getYoutubeEmbedUrl } from "../../lib/utils";
 
 export const useAddVideo = ({ refetchUserDetails }) => {
   const [isModalAddVideo, setIsModalAddVideo] = useState(false);
@@ -16,12 +17,22 @@ export const useAddVideo = ({ refetchUserDetails }) => {
     },
     onSubmit: () => {
       const { ...data } = formikAddVideo.values;
+      data.url = getYoutubeEmbedUrl(data.url);
       addVideo(data);
     },
     validationSchema: Yup.object({
-      title: Yup.string().required("Title is required"),
-      url: Yup.string().required("Youtube url is required"),
-      thumbnailUrl: Yup.string().required("Thumbnail url is required"),
+      title: Yup.string()
+        .required("Title is required")
+        .max(100, "Title must be less than 100 characters"),
+      url: Yup.string()
+        .required("Youtube url is required")
+        .matches(
+          /^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/,
+          "Youtube url is not valid",
+        ),
+      thumbnailUrl: Yup.string()
+        .required("Thumbnail url is required")
+        .matches(/^https:\/\/.*img.*$/, "Thumbnail url is not valid"),
     }),
   });
 
