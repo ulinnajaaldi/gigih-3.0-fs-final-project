@@ -70,7 +70,7 @@ const CardVideosUser = ({
         className="bg-white text-black"
       >
         <Link
-          to={`/edit-video/${id}`}
+          to={`/dashboard/edit/${id}`}
           className="absolute right-2 top-20 rounded-md bg-amber-600 p-2 text-white opacity-0 transition-opacity group-hover:opacity-100"
         >
           <PencilIcon className="h-5 w-5" />
