@@ -4,7 +4,7 @@ const LayoutMain = ({ children }) => {
   return (
     <>
       <NavigationBar />
-      <main className="container">{children}</main>
+      <main className="container mt-20">{children}</main>
     </>
   );
 };
