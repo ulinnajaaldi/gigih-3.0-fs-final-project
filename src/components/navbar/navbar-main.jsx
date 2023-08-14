@@ -82,7 +82,7 @@ function NavList() {
                 className="font-normal"
                 color="inherit"
               >
-                Profile Menu
+                Dashboard
               </Typography>
             </MenuItem>
             <MenuItem
@@ -122,7 +122,7 @@ export default function NavigationBar() {
   }, []);
 
   return (
-    <header className="border-b-2 bg-white ">
+    <header className="fixed left-0 right-0 top-0 z-[999] border-b-2 bg-white">
       <Navbar
         className="container bg-white bg-opacity-100 px-3 py-2 md:px-6"
         shadow={false}
