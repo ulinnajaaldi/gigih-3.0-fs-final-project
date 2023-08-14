@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import { LayoutMain } from "../components";
+import { LayoutMain, ScrollToTopButton } from "../components";
 import { SkeletonCardVideos } from "../components";
 import { useFormik } from "formik";
 import {
@@ -60,6 +60,7 @@ const HomePage = () => {
             <p className="font-semibold">Ooups, no videos found!</p>
           </div>
         )}
+        <ScrollToTopButton />
       </section>
     </LayoutMain>
   );
