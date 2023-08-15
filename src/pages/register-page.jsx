@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/auth-provider";
 import { HomeIcon } from "@heroicons/react/24/outline";
 import { InformationCircleIcon } from "@heroicons/react/20/solid";
 import {
@@ -15,7 +17,11 @@ import { toastNotify } from "../lib/utils";
 import { useRegisterForm } from "../features/auth/register/useRegisterForm";
 
 const RegisterPage = () => {
+  const { data } = useContext(AuthContext);
   const navigate = useNavigate();
+  if (data) {
+    navigate("/");
+  }
 
   const onSuccess = (data) => {
     toastNotify({

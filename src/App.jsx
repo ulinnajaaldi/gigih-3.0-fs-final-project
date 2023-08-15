@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import {
   HomePage,
   UserDetailsPage,
@@ -10,10 +9,10 @@ import {
   NotFoundPage,
 } from "./pages";
 import { Route, Routes } from "react-router";
-import { AuthContext } from "./contexts/auth-provider";
+import Cookies from "js-cookie";
 
 const App = () => {
-  const { data } = useContext(AuthContext);
+  const token = Cookies.get("access_token");
 
   const routes = [
     { path: "*", element: <NotFoundPage /> },
@@ -24,11 +23,11 @@ const App = () => {
     { path: "/video/:id", element: <VideoDetailsPage /> },
     {
       path: "/dashboard",
-      element: data === null ? <NotFoundPage /> : <DashboardPage />,
+      element: !token ? <NotFoundPage /> : <DashboardPage />,
     },
     {
       path: "/dashboard/edit/:id",
-      element: data === null ? <NotFoundPage /> : <DashboardEditPage />,
+      element: !token ? <NotFoundPage /> : <DashboardEditPage />,
     },
   ];
 

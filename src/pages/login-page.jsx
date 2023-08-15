@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/auth-provider";
 import { HomeIcon } from "@heroicons/react/24/outline";
 import {
   Button,
@@ -13,6 +15,12 @@ import { toastNotify } from "../lib/utils";
 import { useLoginForm } from "../features/auth/login/useLoginForm";
 
 const LoginPage = () => {
+  const { data } = useContext(AuthContext);
+  const navigate = useNavigate();
+  if (data) {
+    navigate("/");
+  }
+
   const onSuccess = () => {
     window.location.href = "/";
   };
