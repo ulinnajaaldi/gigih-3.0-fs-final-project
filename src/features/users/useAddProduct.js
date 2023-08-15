@@ -51,6 +51,7 @@ export const useAddProduct = ({ refetchUserDetails }) => {
         message: "Product successfully added",
       });
       refetchUserDetails();
+      formikAddProduct.resetForm();
       setIsModalAddProduct(false);
     },
     onError: (error) => {
